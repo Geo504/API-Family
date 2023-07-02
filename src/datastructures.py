@@ -11,18 +11,24 @@ class FamilyStructure:
         return str(id)
 
     def add_member(self, member):
-        self._members.append({"first_name": member["first_name"], "last_name": self.last_name, "id": self._generateId()})
+        member["last_name"]= self.last_name
+        member["id"] = self._generateId()
+        self._members.append(member)
+
 
     def delete_member(self, id):
         for member in self._members:
             if member["id"] == id:
                 return self._members.remove(member)
-            return member
+        else:
+            return None
         
     def get_member(self, id):
         for member in self._members:
             if member["id"] == id:
                 return member
+        else:
+            return None
 
     def get_all_members(self):
         return self._members
